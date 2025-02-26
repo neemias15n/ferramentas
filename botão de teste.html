@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@keyframes hover {
+  0% {width: 102px; height: 102px; border-radius: 50%;}
+  100% {width: 306px; height: 102px; border-radius: 102px;}
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 102px;
+  height: 102px;
+  background: linear-gradient(#0097B2, #7ED957);
+  border: 8px solid #C1FF72;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.5s ease; /* Aumentou a velocidade da animação de passar o mouse */
+  font-family: 'Arial Black', sans-serif;
+  font-size: 25px;
+  padding: 10px;
+  animation: hover 2s forwards 2s; /* Adicionou um atraso de 2s antes da animação começar */
+}
+
+.btn:hover {
+  transform: scale(1.2);
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 2s ease 2s; /* Adicionou um atraso de 2s antes da animação começar */
+}
+
+.iframe-container {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#myBtnLink {
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="https://chat.whatsapp.com/BpSUIRYpBtLCo68Vuv7lNT" id="myBtnLink">
+    <div class="btn" id="myBtn" onclick="changeColor()">
+      <div class="iframe-container">
+        <iframe src="https://giphy.com/embed/Oh9xW9dL6GZh04BZy1" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      </div>
+      <span id="btnText"></span>
+    </div>
+  </a>
+</div>
+
+<script>
+window.onload = function() {
+  setTimeout(function() {
+    document.getElementById("btnText").innerHTML = "Entrar no grupo";
+    document.getElementById("btnText").style.opacity = "1";
+  }, 4000); /* Delay of 4s to match the CSS transition */
+}
+
+function changeColor() {
+  document.getElementById("myBtn").style.background = "white";
+  document.getElementById("btnText").style.color = "#23B33A";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Insira números de telefone separados por vírgula e espaço</h2>
+
+<textarea id="phoneNumbers" rows="4" cols="50">
+</textarea>
+
+<button onclick="generateCSV()">Gerar CSV</button>
+
+<script>
+function generateCSV() {
+    var text = document.getElementById("phoneNumbers").value;
+    var numbers = text.split(', ');
+    numbers = numbers.map(number => number.replace(/\D/g, '')); // Remove tudo que não é dígito
+    numbers = [...new Set(numbers)]; // Remove duplicatas
+    var csvContent = numbers.join('\n');
+    downloadCSV(csvContent);
+}
+
+function downloadCSV(csvContent) {
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.style.visibility = 'hidden';
+    link.download = 'PhoneNumbers.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>
